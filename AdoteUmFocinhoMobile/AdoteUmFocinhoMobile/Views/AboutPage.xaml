@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AdoteUmFocinhoMobile.Views.AboutPage"
+             Title="Sobre">
+
+    <ScrollView>
+        <StackLayout Padding="5">
+
+            <Image Source="logo.png" 
+                   HorizontalOptions="Center"/>
+            
+            <Label Text="Versão 1.0.0" 
+                   HorizontalOptions="Center"/>
+
+            <StackLayout Padding="20" />
+
+            <Label Text="O que é o Adote um Focinho ?"
+                   FontSize="Large"
+                   FontAttributes="Bold" />
+            <Label Text="Texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
+                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
+                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
+                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
+                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
+                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
+                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
+                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
+                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição "
+                   FontSize="Medium" />
+            <StackLayout Padding="20" />
+
+            <Button Text="Política de Privacidade"
+                    BackgroundColor="#ff7043"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    WidthRequest="250"/>
+            
+            <Label Text="Desenvolvidor por: Gustavo Maes"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"/>
+        
+            <StackLayout Padding="10" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

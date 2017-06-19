@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AdoteUmFocinhoMobile.Views.FiltersPage"
+             Title="Filtros">
+
+    <StackLayout Padding="10"
+                 HorizontalOptions="Center">
+
+        <Label Text="Distância"
+               FontSize="Large"
+               HorizontalTextAlignment="Center"
+               FontAttributes="Bold" />
+        <Label Text="50 Km"
+               FontSize="Medium" 
+               HorizontalTextAlignment="Center"/>
+        <Slider Maximum="50"
+                Minimum="1" 
+                WidthRequest="300"/>
+
+        <StackLayout Padding="10" />
+
+        <Label Text="Espécie"
+               FontSize="Large"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center" />
+
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+
+            <StackLayout HorizontalOptions="Center" 
+                         Padding="5">
+                <Label Text="Cachorro"
+                       FontSize="Medium" 
+                       HorizontalTextAlignment="Center" />
+                <Switch HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center"
+                         Padding="5">
+                <Label Text="Gato"
+                       FontSize="Medium"
+                       HorizontalTextAlignment="Center" />
+                <Switch HorizontalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Padding="10" />
+
+        <Label Text="Idade"
+            FontSize="Large"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center" />
+
+        <StackLayout Orientation="Horizontal"
+                    HorizontalOptions="Center">
+
+            <StackLayout HorizontalOptions="Center"
+                            Padding="5">
+                <Label Text="Filhote"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center" />
+                <Switch HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center"
+                            Padding="5">
+                <Label Text="Adolescente"
+                    FontSize="Medium"
+                    HorizontalTextAlignment="Center" />
+                <Switch HorizontalOptions="Center"/>
+            </StackLayout>
+
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal"
+                    HorizontalOptions="Center">
+            
+            <StackLayout HorizontalOptions="Center"
+                             Padding="5">
+                <Label Text="Adulto"
+                       FontSize="Medium"
+                       HorizontalTextAlignment="Center" />
+                
+                <Switch HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center"
+                             Padding="5">
+                <Label Text="3ª Idade"
+                       FontSize="Medium"
+                       HorizontalTextAlignment="Center" />
+                
+                <Switch HorizontalOptions="Center"/>
+            </StackLayout>
+            
+        </StackLayout>
+
+    </StackLayout>
+  
+</ContentPage>

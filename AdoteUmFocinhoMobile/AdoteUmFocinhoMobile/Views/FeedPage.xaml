@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AdoteUmFocinhoMobile.Views;assembly=AdoteUmFocinhoMobile"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:loca="clr-namespace:AdoteUmFocinhoMobile.Views"
+             x:Class="AdoteUmFocinhoMobile.Views.FeedPage"
+             Title="Adote um Focinho">
+
+    <Grid>
+        
+        <flv:FlowListView x:Name="flv"
+                          IsVisible="{Binding FlvVisible}"
+                          FlowColumnCount="2"
+                          FlowItemsSource="{Binding Pets}"
+                          SeparatorVisibility="None"
+                          RowHeight="{Binding HeightDP}">
+
+            <flv:FlowListView.Header>
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Padding="10">
+                    <Label Text="Olá Lisa."
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="Encontramos 4 focinhos para adoção próximos a você."
+                           FontSize="Medium"
+                           LineBreakMode="WordWrap"
+                           HorizontalTextAlignment="Center"/>
+
+                    <StackLayout Padding="5" />
+
+                </StackLayout>
+            </flv:FlowListView.Header>
+
+            <flv:FlowListView.FlowColumnTemplate>
+
+                <DataTemplate>
+                    <local:FeedCell />
+                </DataTemplate>
+
+            </flv:FlowListView.FlowColumnTemplate>
+
+        </flv:FlowListView>
+
+        <StackLayout IsVisible="{Binding StackVisible}"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+            
+            <Label Text="{Binding TextAwait}"
+                   FontSize="Medium"
+                   LineBreakMode="WordWrap"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+
+            <ActivityIndicator IsRunning="true"/>
+        </StackLayout>
+        
+
+        <loca:Loading/>
+
+    </Grid>
+
+</ContentPage>

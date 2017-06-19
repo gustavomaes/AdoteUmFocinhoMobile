@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             x:Class="AdoteUmFocinhoMobile.Views.RegisterPetPage"
+             Title="Cadastro Focinho">
+
+    <ScrollView>
+
+        <StackLayout>
+
+            <Image Source="foto.png" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#ff5722"
+                    HeightRequest="75"
+                    TextColor="White"
+                    Text="Foto" />
+                <Button HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#ff5722"
+                    HeightRequest="75"
+                    TextColor="White"
+                    Text="Galeria" />
+            </StackLayout>
+
+            <BoxView Color="#607D8B" 
+                     HeightRequest="1" />
+
+            <Button Text="Espécie"
+                    BackgroundColor="#ff7043"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"/>
+
+            <Button Text="Idade"
+                    BackgroundColor="#ff7043"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"/>
+
+            <Label Text="Descrição"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold" />
+
+            <Frame OutlineColor="#607D8B"
+                   Margin="10,10,10,10">
+                <Editor BackgroundColor="White"
+                        Margin="-9,-9,-9,-9"
+                        HeightRequest="200"/>
+            </Frame>
+
+            <Label Text="Contatos"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold" />
+            
+            <StackLayout Orientation="Horizontal"
+                             VerticalOptions="Center"
+                         Padding="10,0,0,0">
+
+                <iconize:IconLabel FontSize="Medium" 
+                                       Text="fa-envelope"
+                                       VerticalTextAlignment="Center"/>
+
+                <Entry Placeholder="E-mail" 
+                       FontSize="Medium"
+                       VerticalOptions="Center"
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="Center"
+                         Padding="10,0,0,0">
+
+                <iconize:IconLabel FontSize="Medium" 
+                                       Text="fa-phone-square"
+                                       VerticalTextAlignment="Center"/>
+
+                <Entry Placeholder="Telefone" 
+                       Keyboard="Telephone"
+                       FontSize="Medium"
+                       VerticalOptions="Center"
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="Center"
+                         Padding="10,0,0,0">
+
+                <iconize:IconLabel FontSize="Medium" 
+                                       Text="fa-whatsapp"
+                                       VerticalTextAlignment="Center"/>
+
+                <Entry Placeholder="Whatsapp" 
+                       Keyboard="Telephone"
+                       FontSize="Medium"
+                       VerticalOptions="Center"
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <Button Text="Publicar"
+                    BackgroundColor="#ff7043"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    HeightRequest="75"/>
+
+
+        </StackLayout>
+        
+    </ScrollView>
+    
+</ContentPage>

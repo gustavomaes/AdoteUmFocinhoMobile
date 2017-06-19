@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+                        x:Class="AdoteUmFocinhoMobile.App">
+
+
+
+  <Application.Resources>
+    <ResourceDictionary>
+
+      <Style x:Key="LoadingPage" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Opacity" Value="0.8" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+      </Style>
+
+    </ResourceDictionary>
+  </Application.Resources>
+  
+  
+</prism:PrismApplication>

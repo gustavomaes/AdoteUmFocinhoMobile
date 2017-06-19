@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             x:Class="AdoteUmFocinhoMobile.Views.DetailPage"
+             Title="Detalhes">
+
+    <ScrollView>
+        <StackLayout>
+            <Image Source="http://www.dhresource.com/0x0s/f2-albu-g3-M00-65-49-rBVaHVZ-fPOAHufBAALXPo3WVlA919.jpg/comfortable-cozy-dog-cat-puppy-sleeping-bag.jpg" />
+                    
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Cachorro"
+                       FontSize="Large"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"/>
+                <Label Text=" | "
+                       FontSize="Large"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"/>
+
+                <Label Text="3ª Idade"
+                       FontSize="Large"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+
+            <StackLayout Padding="5">
+
+                <Label Text="Texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição
+                       Texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição"
+                       FontSize="Medium"/>
+
+                <Label Text="Contatos"
+                       FontSize="Large"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       Margin="0,5,0,5" />
+
+                <StackLayout Orientation="Horizontal"
+                             VerticalOptions="Center">
+
+                    <iconize:IconLabel FontSize="Medium" 
+                                       Text="fa-envelope"
+                                       VerticalTextAlignment="Center"/>
+
+                    <Label Text="gustavomaescd@gmail.com" 
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           Margin="5,0,0,0" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"
+                             VerticalOptions="Center">
+
+                    <iconize:IconLabel FontSize="Medium" 
+                                       Text="fa-phone-square"
+                                       VerticalTextAlignment="Center"/>
+
+                    <Label Text="(47) 3372-8089" 
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           Margin="5,0,0,0" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"
+                             VerticalOptions="Center">
+
+                    <iconize:IconLabel FontSize="Medium" 
+                                       Text="fa-whatsapp"
+                                       VerticalTextAlignment="Center"/>
+
+                    <Label Text="(47) 99967-4062" 
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           Margin="5,0,0,0" />
+                </StackLayout>
+
+                <StackLayout Padding="5" />
+
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+
+</ContentPage>

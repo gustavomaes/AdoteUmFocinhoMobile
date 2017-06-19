@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:local="clr-namespace:AdoteUmFocinhoMobile.Views"
+             x:Class="AdoteUmFocinhoMobile.Views.LoginPage">
+
+        <Grid>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Image Source="background.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" />
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center"
+                        VerticalOptions="Center">
+
+                <Image Source="logo.png" 
+                    WidthRequest="210"/>
+
+                <StackLayout Padding="30" />
+
+                <Image Source="facebook_button.png" 
+                    WidthRequest="280"/>
+
+                <StackLayout Padding="1"/>
+
+                <Entry Text="{Binding User.Email}"
+                    Placeholder="Email"
+                    Keyboard="Email"
+                    BackgroundColor="#59ffffff"
+                    WidthRequest="300"/>
+                <Entry Text="{Binding User.Password}"
+                    Placeholder="Senha"
+                    IsPassword="True"
+                    BackgroundColor="#59ffffff"
+                    WidthRequest="300"/>
+
+                <StackLayout Padding="3"/>
+
+                <Button Text="Entrar"
+                    BackgroundColor="#ff7043"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    WidthRequest="170"
+                    Command="{Binding LoginCommand}"/>
+
+                <Button Text="Cadastrar"
+                    BackgroundColor="#ff7043"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    WidthRequest="170"
+                    Command="{Binding RegisterCommand}"/>
+
+            </StackLayout>
+
+            <local:Loading/>
+
+        </Grid>
+
+</ContentPage>

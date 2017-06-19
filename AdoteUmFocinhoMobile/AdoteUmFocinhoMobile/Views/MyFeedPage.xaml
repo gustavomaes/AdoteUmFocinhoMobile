@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AdoteUmFocinhoMobile.Views;assembly=AdoteUmFocinhoMobile"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="AdoteUmFocinhoMobile.Views.MyFeedPage"
+             Title="Meus focinhos">
+
+    <flv:FlowListView x:Name="flv"
+                      FlowColumnCount="2"
+                      FlowItemsSource="{Binding Pets}"
+                      SeparatorVisibility="None"
+                      RowHeight="{Binding HeightDP}">
+
+        <flv:FlowListView.Header>
+            <StackLayout Padding="10"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
+                
+                <Button Text="Cadastrar um novo Focinho"
+                    BackgroundColor="#ff7043"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    WidthRequest="250"/>
+                
+            </StackLayout>
+        </flv:FlowListView.Header>
+
+        <flv:FlowListView.FlowColumnTemplate>
+
+            <DataTemplate>
+                <local:FeedCell />
+            </DataTemplate>
+
+        </flv:FlowListView.FlowColumnTemplate>
+
+    </flv:FlowListView>
+
+</ContentPage>
