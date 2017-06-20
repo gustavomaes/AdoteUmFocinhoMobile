@@ -13,11 +13,22 @@
                FontSize="Large"
                HorizontalTextAlignment="Center"
                FontAttributes="Bold" />
-        <Label Text="50 Km"
-               FontSize="Medium" 
-               HorizontalTextAlignment="Center"/>
+        
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+            
+            <Label Text="{Binding Filters.Radius}"
+                    FontSize="Medium" 
+                    HorizontalTextAlignment="Center"/>
+            <Label Text=" Km"
+                    FontSize="Medium" 
+                    HorizontalTextAlignment="Center"/>
+            
+        </StackLayout>
+        
         <Slider Maximum="50"
-                Minimum="1" 
+                Minimum="1"
+                Value="{Binding Filters.Radius}"
                 WidthRequest="300"/>
 
         <StackLayout Padding="10" />
@@ -35,7 +46,8 @@
                 <Label Text="Cachorro"
                        FontSize="Medium" 
                        HorizontalTextAlignment="Center" />
-                <Switch HorizontalOptions="Center"/>
+                <Switch HorizontalOptions="Center"
+                        IsToggled="{Binding Dog}"/>
             </StackLayout>
 
             <StackLayout HorizontalOptions="Center"
@@ -43,7 +55,8 @@
                 <Label Text="Gato"
                        FontSize="Medium"
                        HorizontalTextAlignment="Center" />
-                <Switch HorizontalOptions="Center"/>
+                <Switch HorizontalOptions="Center"
+                        IsToggled="{Binding Cat}"/>
             </StackLayout>
         </StackLayout>
 
@@ -62,7 +75,9 @@
                 <Label Text="Filhote"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center" />
-                <Switch HorizontalOptions="Center"/>
+                <Switch HorizontalOptions="Center"
+                        IsToggled="{Binding Puppy}"/>
+                
             </StackLayout>
 
             <StackLayout HorizontalOptions="Center"
@@ -70,7 +85,9 @@
                 <Label Text="Adolescente"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center" />
-                <Switch HorizontalOptions="Center"/>
+                <Switch HorizontalOptions="Center"
+                        IsToggled="{Binding Teenager}"/>
+                
             </StackLayout>
 
         </StackLayout>
@@ -83,8 +100,10 @@
                 <Label Text="Adulto"
                        FontSize="Medium"
                        HorizontalTextAlignment="Center" />
+
+                <Switch HorizontalOptions="Center"
+                        IsToggled="{Binding Adult}"/>
                 
-                <Switch HorizontalOptions="Center"/>
             </StackLayout>
 
             <StackLayout HorizontalOptions="Center"
@@ -92,8 +111,10 @@
                 <Label Text="3ª Idade"
                        FontSize="Medium"
                        HorizontalTextAlignment="Center" />
+
+                <Switch HorizontalOptions="Center"
+                        IsToggled="{Binding Senior}"/>
                 
-                <Switch HorizontalOptions="Center"/>
             </StackLayout>
             
         </StackLayout>

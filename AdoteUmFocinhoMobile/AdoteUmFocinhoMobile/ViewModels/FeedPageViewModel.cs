@@ -2,6 +2,7 @@
 using AdoteUmFocinhoMobile.Util;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,6 +42,15 @@ namespace AdoteUmFocinhoMobile.ViewModels
             set { SetProperty(ref _stackVisible, value); }
         }
 
+        private string _headerText;
+
+        public string HeaderText
+        {
+            get { return _headerText; }
+            set { SetProperty(ref _headerText, value); }
+        }
+
+
         private ObservableCollection<Pet> _pets;
 
         public ObservableCollection<Pet> Pets
@@ -61,27 +71,33 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
         //Commands
         public Command<Pet> ItemTappedCommand { get; set; }
-
+        public Command FilterCommand { get; set; }
 
         public FeedPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-
-            TextAwait = "Estamos pegando a sua localização, aguarde um momento.";
-            StackVisible = true;
+            
             HeightDP = App.LarguraDP / 2;
 
             Filters = new Filter();
             Filters.Radius = 50;
-            Filters.Specie = 0;
-            Filters.LifeStage = 0;
+            Filters.Specie = new List<int>(new int[] { 1,2 });
+            Filters.LifeStage = new List<int>(new int[] { 1, 2, 3, 4 }); ;
 
             
             ItemTappedCommand = new Command<Pet>(ExecuteItemTappedCommand);
 
-            SearchPets();
+            FilterCommand = new Command(ExecuteFilterCommand);
+
         }
 
+        async void ExecuteFilterCommand()
+        {
+            var navigationParams = new NavigationParameters();
+            navigationParams.Add("filter", Filters);
+
+            await _navigationService.NavigateAsync("FiltersPage", navigationParams);
+        }
 
         async Task SearchPets()
         {
@@ -90,16 +106,30 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
                 using (APIHelper API = new APIHelper())
                 {
+                    TextAwait = "Estamos pegando a sua localização, aguarde um momento.";
+                    StackVisible = true;
+                    FlvVisible = false;
+
                     await GetPosition();
+
                     TextAwait = "Agora estamos procurando Focinhos próximos a você, espera só mais um pouquinho.";
                     API.HeadersRequest.Add("widthscreen", App.LarguraTela.ToString());
                     var ReturnPets = await API.POST<ObservableCollection<Pet>>("api/pets/feed", Filters);
 
-                    TextAwait = "";
-                    StackVisible = false;
-                    FlvVisible = true;
+                    if (ReturnPets != null)
+                    {
+                        TextAwait = "";
+                        HeaderText = "Encontramos " + ReturnPets.Count + " focinhos para adoção próximos a você";
+                        StackVisible = false;
+                        FlvVisible = true;
 
-                    Pets = ReturnPets;
+                        Pets = ReturnPets;
+                    }
+                    else
+                        TextAwait = "Infelizmente não achamos nenhum focinho próximo a você :(";
+
+
+
                 }
             }
             catch (HTTPException) { }
@@ -108,19 +138,24 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
         private void ExecuteItemTappedCommand(Pet pet)
         {
-            //Go to Details Page
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public async void OnNavigatedTo(NavigationParameters parameters)
         {
+            if ((Filter)parameters["filter"] != null)
+            { 
+                Filters = (Filter)parameters["filter"];
+            }
+            await SearchPets();
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
+
         }
 
         #region Localizacao

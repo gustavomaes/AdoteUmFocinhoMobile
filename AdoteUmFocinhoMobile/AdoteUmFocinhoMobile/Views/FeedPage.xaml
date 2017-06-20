@@ -5,10 +5,14 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
-             xmlns:loca="clr-namespace:AdoteUmFocinhoMobile.Views"
              x:Class="AdoteUmFocinhoMobile.Views.FeedPage"
              Title="Adote um Focinho">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Filtros" 
+                     Command="{Binding FilterCommand}" />
+    </ContentPage.ToolbarItems>
+    
     <Grid>
         
         <flv:FlowListView x:Name="flv"
@@ -26,7 +30,7 @@
                            FontSize="Large"
                            FontAttributes="Bold"
                            HorizontalTextAlignment="Center"/>
-                    <Label Text="Encontramos 4 focinhos para adoção próximos a você."
+                    <Label Text="{Binding HeaderText}"
                            FontSize="Medium"
                            LineBreakMode="WordWrap"
                            HorizontalTextAlignment="Center"/>
@@ -60,7 +64,7 @@
         </StackLayout>
         
 
-        <loca:Loading/>
+        <local:Loading/>
 
     </Grid>
 

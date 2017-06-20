@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,22 @@ using System.Threading.Tasks;
 
 namespace AdoteUmFocinhoMobile.Models
 {
-    public class Filter
+    public class Filter : BindableBase
     {
-        public int Radius { get; set; }
+        private int _radius;
+
+        public int Radius
+        {
+            get { return _radius; }
+            set { SetProperty(ref _radius, value); }
+        }
 
         public double Latitude { get; set; }
 
         public double Longitude { get; set; }
 
-        public int Specie { get; set; }
+        public List<int> Specie;
 
-        public int LifeStage { get; set; }
+        public List<int> LifeStage;
     }
 }
