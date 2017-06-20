@@ -8,13 +8,20 @@
         <Image Source="{Binding PhotoUrl}"/>
 
         <StackLayout Padding="0,5,3,0" />
-        
+
         <iconize:IconImage HeightRequest="20" 
-                           Icon="fa-heart-o"
+                           Icon="{Binding IconFavorite}"
+                           IsVisible="{Binding NotMyPet}"
                            WidthRequest="35" 
                            HorizontalOptions="End"
                            VerticalOptions="Start"
-                           IconColor="White" />
+                           IconColor="White">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding FavoriteCommand}" 
+                                      CommandParameter="{Binding .}" 
+                                      NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </iconize:IconImage>
         
     </Grid>
     

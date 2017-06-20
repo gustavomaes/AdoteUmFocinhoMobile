@@ -1,73 +1,125 @@
 ﻿using AdoteUmFocinhoMobile.Models;
+using AdoteUmFocinhoMobile.Util;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace AdoteUmFocinhoMobile.ViewModels
 {
-    public class FavoriteFeedPageViewModel : BindableBase
+    public class FavoriteFeedPageViewModel : BindableBase, INavigationAware
     {
-        private List<Pet> _pets;
+        //Prism
+        private INavigationService _navigationService;
 
-        public List<Pet> Pets
+        //Prop
+        private bool _flvVisible;
+
+        public bool FlvVisible
+        {
+            get { return _flvVisible; }
+            set { SetProperty(ref _flvVisible, value); }
+        }
+
+        private string _textAwait;
+
+        public string TextAwait
+        {
+            get { return _textAwait; }
+            set { SetProperty(ref _textAwait, value); }
+        }
+
+        private bool _stackVisible;
+
+        public bool StackVisible
+        {
+            get { return _stackVisible; }
+            set { SetProperty(ref _stackVisible, value); }
+        }
+
+        private bool _actVisible;
+
+        public bool ActVisible
+        {
+            get { return _actVisible; }
+            set { SetProperty(ref _actVisible, value); }
+        }
+
+
+        private ObservableCollection<Pet> _pets;
+
+        public ObservableCollection<Pet> Pets
         {
             get { return _pets; }
             set { SetProperty(ref _pets, value); }
         }
 
+        //Commands
+        public Command<Pet> ItemTappedCommand { get; set; }
+
         public int HeightDP { get; set; }
 
-        public FavoriteFeedPageViewModel()
+        public FavoriteFeedPageViewModel(INavigationService navigationService)
         {
-            Pets = new List<Pet>();
+            _navigationService = navigationService;
+
             HeightDP = App.LarguraDP / 2;
 
-            Pet temp = new Pet();
-            temp.Description = "Teste layout 01";
-            temp.PhotoUrl = "http://www.dhresource.com/0x0s/f2-albu-g3-M00-65-49-rBVaHVZ-fPOAHufBAALXPo3WVlA919.jpg/comfortable-cozy-dog-cat-puppy-sleeping-bag.jpg";
-            Pets.Add(temp);
+            ItemTappedCommand = new Command<Pet>(ExecuteItemTappedCommand);
 
-            temp = new Pet();
-            temp.Description = "Teste layout 02";
-            temp.PhotoUrl = "https://ae01.alicdn.com/kf/HTB1H_LELFXXXXXBapXXq6xXFXXXv/2016-Snow-White-Puppy-Dog-Princess-Dress-Spring-and-Summer-Pet-Clothes-Skirt-For-Small-Dogs.jpg";
-            Pets.Add(temp);
-
-            temp = new Pet();
-            temp.Description = "Teste layout 03";
-            temp.PhotoUrl = "http://www.101dogbreeds.com/wp-content/uploads/2014/11/Louisiana-Catahoula-Leopard-Dog-Images.jpg";
-            Pets.Add(temp);
-
-            temp = new Pet();
-            temp.Description = "Teste layout 01";
-            temp.PhotoUrl = "http://www.dhresource.com/0x0s/f2-albu-g3-M00-65-49-rBVaHVZ-fPOAHufBAALXPo3WVlA919.jpg/comfortable-cozy-dog-cat-puppy-sleeping-bag.jpg";
-            Pets.Add(temp);
-
-            temp = new Pet();
-            temp.Description = "Teste layout 02";
-            temp.PhotoUrl = "https://ae01.alicdn.com/kf/HTB1H_LELFXXXXXBapXXq6xXFXXXv/2016-Snow-White-Puppy-Dog-Princess-Dress-Spring-and-Summer-Pet-Clothes-Skirt-For-Small-Dogs.jpg";
-            Pets.Add(temp);
-
-            temp = new Pet();
-            temp.Description = "Teste layout 03";
-            temp.PhotoUrl = "http://www.101dogbreeds.com/wp-content/uploads/2014/11/Louisiana-Catahoula-Leopard-Dog-Images.jpg";
-            Pets.Add(temp);
-
-            temp = new Pet();
-            temp.Description = "Teste layout 01";
-            temp.PhotoUrl = "http://www.dhresource.com/0x0s/f2-albu-g3-M00-65-49-rBVaHVZ-fPOAHufBAALXPo3WVlA919.jpg/comfortable-cozy-dog-cat-puppy-sleeping-bag.jpg";
-            Pets.Add(temp);
-
-            temp = new Pet();
-            temp.Description = "Teste layout 02";
-            temp.PhotoUrl = "https://ae01.alicdn.com/kf/HTB1H_LELFXXXXXBapXXq6xXFXXXv/2016-Snow-White-Puppy-Dog-Princess-Dress-Spring-and-Summer-Pet-Clothes-Skirt-For-Small-Dogs.jpg";
-            Pets.Add(temp);
-
-            temp = new Pet();
-            temp.Description = "Teste layout 03";
-            temp.PhotoUrl = "http://www.101dogbreeds.com/wp-content/uploads/2014/11/Louisiana-Catahoula-Leopard-Dog-Images.jpg";
-            Pets.Add(temp);
+            SearchPets();
         }
+
+        async Task SearchPets()
+        {
+            try
+            {
+
+                using (APIHelper API = new APIHelper())
+                {
+                    TextAwait = "Estamos buscando seus Focinhos favoritos...";
+                    StackVisible = true;
+                    FlvVisible = false;
+                    ActVisible = true;
+
+                    API.HeadersRequest.Add("widthscreen", App.LarguraTela.ToString());
+                    var ReturnPets = await API.GET<ObservableCollection<Pet>>("api/pets/favorite");
+
+                    if (ReturnPets != null)
+                    {
+                        TextAwait = "";
+                        StackVisible = false;
+                        FlvVisible = true;
+                        
+                        Pets = ReturnPets;
+                    }
+                    else
+                        TextAwait = "Você ainda não marcou nenhum Focinho como favorito.";
+
+                    ActVisible = false;
+                }
+            }
+            catch (HTTPException) { }
+            catch (Exception) { }
+        }
+
+        private async void ExecuteItemTappedCommand(Pet pet)
+        {
+            var navigationParams = new NavigationParameters();
+            navigationParams.Add("pet", pet);
+
+            await _navigationService.NavigateAsync("DetailPage", navigationParams);
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters) { }
+
+        public void OnNavigatedTo(NavigationParameters parameters) { }
+
+        public void OnNavigatingTo(NavigationParameters parameters) { }
     }
 }

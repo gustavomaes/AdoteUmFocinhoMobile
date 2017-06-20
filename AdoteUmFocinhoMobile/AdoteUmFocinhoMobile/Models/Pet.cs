@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AdoteUmFocinhoMobile.Util;
+using System;
 
 namespace AdoteUmFocinhoMobile.Models
 {
-    public class Pet
+    public class Pet : PetController
     {
         public int Id { get; set; }
 
@@ -48,6 +49,21 @@ namespace AdoteUmFocinhoMobile.Models
 
         public int AmountReports { get; set; }
 
-        public bool Favorite { get; set; }
+        private bool _favorite;
+        public bool Favorite
+        {
+            get { return _favorite; }
+            set
+            {
+                SetProperty(ref _favorite, value);
+                RaisePropertyChanged("IconFavorite");
+            }
+        }
+
+
+        public bool MyPet { get; set; }
+        public bool NotMyPet { get { return !MyPet; } }
+
+        public string IconFavorite { get { return (Favorite ? "fa-heart" : "fa-heart-o"); } }
     }
 }

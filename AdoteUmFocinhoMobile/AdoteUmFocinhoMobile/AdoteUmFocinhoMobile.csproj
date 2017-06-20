@@ -42,6 +42,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\APIHelper.cs" />
     <Compile Include="Util\LoadingController.cs" />
+    <Compile Include="Util\PetController.cs" />
     <Compile Include="Util\PhotoHelper.cs" />
     <Compile Include="ViewModels\AboutPageViewModel.cs" />
     <Compile Include="ViewModels\DetailPageViewModel.cs" />

@@ -9,11 +9,14 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
             <StackLayout Padding="0,20,0,0">
-                <Button Text="Teste"/>
-                <Button Text="Teste"/>
-                <Button Text="Teste"/>
-                <Button Text="Teste"/>
-                <Button Text="Teste"/>
+                <Button Text="Principal"
+                        Command="{Binding FeedCommand}"/>
+                <Button Text="Meus Focinhos"
+                        Command="{Binding MyFeedCommand}"/>
+                <Button Text="Focinhos Favoritos"
+                        Command="{Binding MyFavoritesCommand}"/>
+                <Button Text="Sobre"/>
+                <Button Text="Sair"/>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

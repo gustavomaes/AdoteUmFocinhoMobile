@@ -9,77 +9,89 @@
 
     <ScrollView>
         <StackLayout>
-            <Image Source="http://www.dhresource.com/0x0s/f2-albu-g3-M00-65-49-rBVaHVZ-fPOAHufBAALXPo3WVlA919.jpg/comfortable-cozy-dog-cat-puppy-sleeping-bag.jpg" />
+            <Image Source="{Binding PetSelected.PhotoUrl}" />
                     
             <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center">
-                <Label Text="Cachorro"
+                         Margin="5,0,0,0">
+                <Label Text="{Binding SpecieText}"
                        FontSize="Large"
-                       HorizontalTextAlignment="Center"
                        FontAttributes="Bold"/>
                 <Label Text=" | "
                        FontSize="Large"
-                       HorizontalTextAlignment="Center"
                        FontAttributes="Bold"/>
 
-                <Label Text="3ª Idade"
+                <Label Text="{Binding LifeStageText}"
                        FontSize="Large"
-                       HorizontalTextAlignment="Center"
                        FontAttributes="Bold"/>
             </StackLayout>
 
-            <StackLayout Padding="5">
+            <StackLayout Margin="5,0,0,0">
 
-                <Label Text="Texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição
-                       Texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição, texto descrição"
+                <Label Text="{Binding PetSelected.Description}"
                        FontSize="Medium"/>
 
                 <Label Text="Contatos"
                        FontSize="Large"
-                       HorizontalTextAlignment="Center"
                        FontAttributes="Bold"
                        Margin="0,5,0,5" />
 
                 <StackLayout Orientation="Horizontal"
-                             VerticalOptions="Center">
+                             VerticalOptions="Center"
+                             IsVisible="{Binding EmailVisible}">
 
                     <iconize:IconLabel FontSize="Medium" 
                                        Text="fa-envelope"
                                        VerticalTextAlignment="Center"/>
 
-                    <Label Text="gustavomaescd@gmail.com" 
+                    <Label Text="{Binding PetSelected.Email}" 
                            FontSize="Medium"
                            VerticalOptions="Center"
                            Margin="5,0,0,0" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal"
-                             VerticalOptions="Center">
+                             VerticalOptions="Center"
+                             IsVisible="{Binding PhoneVisible}">
 
                     <iconize:IconLabel FontSize="Medium" 
                                        Text="fa-phone-square"
                                        VerticalTextAlignment="Center"/>
 
-                    <Label Text="(47) 3372-8089" 
+                    <Label Text="{Binding PetSelected.Phone}" 
                            FontSize="Medium"
                            VerticalOptions="Center"
                            Margin="5,0,0,0" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal"
-                             VerticalOptions="Center">
+                             VerticalOptions="Center"
+                             IsVisible="{Binding WhatsappVisible}">
 
                     <iconize:IconLabel FontSize="Medium" 
                                        Text="fa-whatsapp"
                                        VerticalTextAlignment="Center"/>
 
-                    <Label Text="(47) 99967-4062" 
+                    <Label Text="{Binding PetSelected.Whatsapp}" 
                            FontSize="Medium"
                            VerticalOptions="Center"
                            Margin="5,0,0,0" />
                 </StackLayout>
 
-                <StackLayout Padding="5" />
+                <StackLayout Padding="10" />
+
+                <Button BackgroundColor="Transparent"
+                        IsVisible="{Binding PetSelected.NotMyPet}"
+                        Text="Denunciar"
+                        Command="{Binding ReportCommand}"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"/>
+
+                <Button BackgroundColor="Transparent"
+                        IsVisible="{Binding PetSelected.MyPet}"
+                        Text="Deletar"
+                        Command="{Binding DeleteCommand}"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"/>
 
             </StackLayout>
         </StackLayout>

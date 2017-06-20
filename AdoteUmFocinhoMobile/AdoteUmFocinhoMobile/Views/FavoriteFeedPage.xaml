@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              xmlns:local="clr-namespace:AdoteUmFocinhoMobile.Views;assembly=AdoteUmFocinhoMobile"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
@@ -8,20 +8,36 @@
              x:Class="AdoteUmFocinhoMobile.Views.FavoriteFeedPage"
              Title="Focinhos Favoritos">
 
-    <flv:FlowListView x:Name="flv"
-                      FlowColumnCount="2"
-                      FlowItemsSource="{Binding Pets}"
-                      SeparatorVisibility="None"
-                      RowHeight="{Binding HeightDP}">
+    <Grid>
+        <flv:FlowListView x:Name="flv"
+                          FlowColumnCount="2"
+                          IsVisible="{Binding FlvVisible}"
+                          FlowItemsSource="{Binding Pets}"
+                          SeparatorVisibility="None"
+                          RowHeight="{Binding HeightDP}"
+                          FlowItemTappedCommand="{Binding ItemTappedCommand}">
 
-        <flv:FlowListView.FlowColumnTemplate>
+            <flv:FlowListView.FlowColumnTemplate>
 
-            <DataTemplate>
-                <local:FeedCell />
-            </DataTemplate>
+                <DataTemplate>
+                    <local:FeedCell />
+                </DataTemplate>
 
-        </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
 
-    </flv:FlowListView>
-    
+        </flv:FlowListView>
+
+        <StackLayout IsVisible="{Binding StackVisible}"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center">
+
+            <Label Text="{Binding TextAwait}"
+                   FontSize="Medium"
+                   LineBreakMode="WordWrap"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+
+            <ActivityIndicator IsRunning="{Binding ActVisible}"/>
+        </StackLayout>
+    </Grid>
 </ContentPage>

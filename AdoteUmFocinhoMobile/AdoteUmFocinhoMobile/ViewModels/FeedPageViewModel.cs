@@ -1,5 +1,6 @@
 ﻿using AdoteUmFocinhoMobile.Models;
 using AdoteUmFocinhoMobile.Util;
+using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using XLabs.Platform.Services.Geolocation;
 
 namespace AdoteUmFocinhoMobile.ViewModels
 {
-    public class FeedPageViewModel : LoadingController, INavigationAware
+    public class FeedPageViewModel : BindableBase, INavigationAware
     {
         //Prism
         private INavigationService _navigationService;
@@ -89,6 +90,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
             FilterCommand = new Command(ExecuteFilterCommand);
 
+            SearchPets();
         }
 
         async void ExecuteFilterCommand()
@@ -136,8 +138,12 @@ namespace AdoteUmFocinhoMobile.ViewModels
             catch (Exception) { }
         }
 
-        private void ExecuteItemTappedCommand(Pet pet)
+        private async void ExecuteItemTappedCommand(Pet pet)
         {
+            var navigationParams = new NavigationParameters();
+            navigationParams.Add("pet", pet);
+
+            await _navigationService.NavigateAsync("DetailPage", navigationParams);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -149,8 +155,9 @@ namespace AdoteUmFocinhoMobile.ViewModels
             if ((Filter)parameters["filter"] != null)
             { 
                 Filters = (Filter)parameters["filter"];
+
+                await SearchPets();
             }
-            await SearchPets();
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

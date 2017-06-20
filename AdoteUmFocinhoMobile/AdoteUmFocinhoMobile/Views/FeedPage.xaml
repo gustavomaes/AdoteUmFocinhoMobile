@@ -20,7 +20,8 @@
                           FlowColumnCount="2"
                           FlowItemsSource="{Binding Pets}"
                           SeparatorVisibility="None"
-                          RowHeight="{Binding HeightDP}">
+                          RowHeight="{Binding HeightDP}"
+                          FlowItemTappedCommand="{Binding ItemTappedCommand}">
 
             <flv:FlowListView.Header>
                 <StackLayout HorizontalOptions="Center"
@@ -62,10 +63,7 @@
 
             <ActivityIndicator IsRunning="true"/>
         </StackLayout>
-        
-
-        <local:Loading/>
-
+       
     </Grid>
 
 </ContentPage>
