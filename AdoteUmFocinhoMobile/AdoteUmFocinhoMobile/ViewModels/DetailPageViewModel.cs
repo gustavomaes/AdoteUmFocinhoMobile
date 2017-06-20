@@ -93,6 +93,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     {
                         await API.DELETE("api/pets/" + PetSelected.Id);
                     }
+
+                    await _navigationService.GoBackAsync();
                 }
                 catch (HTTPException) { }
             }
@@ -115,7 +117,10 @@ namespace AdoteUmFocinhoMobile.ViewModels
             }
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters) { }
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+            parameters.Add("delete", PetSelected);
+        }
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {

@@ -27,7 +27,7 @@
                 <StackLayout HorizontalOptions="Center"
                              VerticalOptions="Center"
                              Padding="10">
-                    <Label Text="Olá Lisa."
+                    <Label Text="{Binding HelloText}"
                            FontSize="Large"
                            FontAttributes="Bold"
                            HorizontalTextAlignment="Center"/>

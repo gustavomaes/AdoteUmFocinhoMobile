@@ -36,6 +36,7 @@
                     BackgroundColor="#ff7043"
                     TextColor="White"
                     HorizontalOptions="Center"
+                    Command="{Binding PrivacyPolicyCommand}"
                     WidthRequest="250"/>
             
             <Label Text="Desenvolvidor por: Gustavo Maes"

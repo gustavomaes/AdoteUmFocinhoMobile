@@ -9,6 +9,13 @@
     <StackLayout>
         <ScrollView>
             <StackLayout>
+
+                <Label Text="Política de Privacidade"
+                       FontAttributes="Bold"
+                       FontSize="Large"/>
+
+                <StackLayout Padding="10"/>
+
                 <Label Text="O QUE FAZEMOS COM AS SUAS INFORMAÇÕES?" 
                    FontAttributes="Bold"
                    FontSize="Medium"/>
@@ -75,16 +82,19 @@ Rua Eugenio Nicolini, n202, Jaraguá do Sul, SC, 89251220, Brazil</Label>
             </StackLayout>
         </ScrollView>
 
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal"
+                     IsVisible="{Binding StackVisible}">
             <Button HorizontalOptions="FillAndExpand"
                     BackgroundColor="#ff7043"
                     HeightRequest="75"
                     TextColor="White"
+                    Command="{Binding AcceptCommand}"
                     Text="ACEITAR" />
             <Button HorizontalOptions="FillAndExpand"  
                     BackgroundColor="#ff5722"
                     HeightRequest="75"
                     TextColor="White"
+                    Command="{Binding RefuseCommand}"
                     Text="RECUSAR" />
         </StackLayout>
     </StackLayout>

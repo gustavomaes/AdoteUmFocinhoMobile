@@ -27,6 +27,15 @@ namespace AdoteUmFocinhoMobile.ViewModels
             set { SetProperty(ref _flvVisible, value); }
         }
 
+        private string _helloText;
+
+        public string HelloText
+        {
+            get { return _helloText; }
+            set { SetProperty(ref _helloText, value); }
+        }
+
+
         private string _textAwait;
 
         public string TextAwait
@@ -85,7 +94,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
             Filters.Specie = new List<int>(new int[] { 1,2 });
             Filters.LifeStage = new List<int>(new int[] { 1, 2, 3, 4 }); ;
 
-            
+            HelloText = "Olá " + App.UsuarioLogado.Name + ".";
+
             ItemTappedCommand = new Command<Pet>(ExecuteItemTappedCommand);
 
             FilterCommand = new Command(ExecuteFilterCommand);
@@ -118,7 +128,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     API.HeadersRequest.Add("widthscreen", App.LarguraTela.ToString());
                     var ReturnPets = await API.POST<ObservableCollection<Pet>>("api/pets/feed", Filters);
 
-                    if (ReturnPets != null)
+                    if (ReturnPets != null && ReturnPets.Count > 0)
                     {
                         TextAwait = "";
                         HeaderText = "Encontramos " + ReturnPets.Count + " focinhos para adoção próximos a você";

@@ -117,7 +117,13 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters) { }
 
-        public void OnNavigatedTo(NavigationParameters parameters) { }
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters["delete"] != null)
+            {
+                Pets.Remove((Pet)parameters["delete"]);
+            }
+        }
 
         public void OnNavigatingTo(NavigationParameters parameters) { }
     }

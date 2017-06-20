@@ -15,7 +15,8 @@
                         Command="{Binding MyFeedCommand}"/>
                 <Button Text="Focinhos Favoritos"
                         Command="{Binding MyFavoritesCommand}"/>
-                <Button Text="Sobre"/>
+                <Button Text="Sobre"
+                        Command="{Binding AboutCommand}"/>
                 <Button Text="Sair"/>
             </StackLayout>
         </ContentPage>

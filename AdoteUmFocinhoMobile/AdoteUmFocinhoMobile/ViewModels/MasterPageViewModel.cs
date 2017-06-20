@@ -17,6 +17,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
         public Command MyFavoritesCommand { get; set; }
         public Command FeedCommand { get; set; }
         public Command MyFeedCommand { get; set; }
+        public Command AboutCommand { get; set; }
 
         public MasterPageViewModel(INavigationService navigationService)
         {
@@ -25,6 +26,12 @@ namespace AdoteUmFocinhoMobile.ViewModels
             MyFavoritesCommand = new Command(ExecuteMyFavoritesCommand);
             FeedCommand = new Command(ExecuteFeedCommand);
             MyFeedCommand = new Command(ExecuteMyFeedCommand);
+            AboutCommand = new Command(ExecuteAboutCommand);
+        }
+
+        async void ExecuteAboutCommand()
+        {
+            await _navigationService.NavigateAsync("NavigationPage/AboutPage");
         }
 
         async void ExecuteMyFeedCommand()

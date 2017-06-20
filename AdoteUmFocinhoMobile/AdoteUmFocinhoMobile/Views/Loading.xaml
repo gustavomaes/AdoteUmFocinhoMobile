@@ -18,8 +18,7 @@
                      BackgroundColor="Transparent">
 
             <ActivityIndicator VerticalOptions="EndAndExpand" 
-                               HorizontalOptions="Center" 
-                               Color="Blue" 
+                               HorizontalOptions="Center"
                                IsRunning="{Binding ActionIsRunning}" 
                                IsVisible="{Binding ActionIsVisible}" />
 

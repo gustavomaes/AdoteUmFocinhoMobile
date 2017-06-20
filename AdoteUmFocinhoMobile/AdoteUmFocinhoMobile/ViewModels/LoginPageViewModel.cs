@@ -86,7 +86,9 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
                         API.HeadersAllRequests = Headers;//SET
 
-                        await _navigationService.NavigateAsync("app:///MasterPage/NavigationPage/FeedPage");
+                        Finaliza();
+
+                        await _navigationService.NavigateAsync("PrivacyPolicyPage");
 
                     }
                 }
