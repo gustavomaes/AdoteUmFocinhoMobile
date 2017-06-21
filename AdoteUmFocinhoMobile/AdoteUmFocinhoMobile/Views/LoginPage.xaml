@@ -19,8 +19,13 @@
 
                 <StackLayout Padding="30" />
 
-                <Image Source="facebook_button.png" 
-                    WidthRequest="280"/>
+            <Image Source="facebook_button.png" 
+                    WidthRequest="280">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FacebookCommand}" 
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
 
                 <StackLayout Padding="1"/>
 

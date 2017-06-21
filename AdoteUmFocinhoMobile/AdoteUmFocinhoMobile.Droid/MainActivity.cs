@@ -39,6 +39,7 @@ namespace AdoteUmFocinhoMobile.Droid
             
             App._LarguraDP = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
             FormsPlugin.Iconize.Droid.IconControls.Init(Resource.Id.toolbar, Resource.Id.sliding_tabs);
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
             LoadApplication(new App(new AndroidInitializer()));
         }

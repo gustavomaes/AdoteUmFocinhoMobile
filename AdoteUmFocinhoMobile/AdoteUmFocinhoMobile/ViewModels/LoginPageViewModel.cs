@@ -1,4 +1,5 @@
 ﻿using AdoteUmFocinhoMobile.Models;
+using AdoteUmFocinhoMobile.Services;
 using AdoteUmFocinhoMobile.Util;
 using Prism.Navigation;
 using Prism.Services;
@@ -15,6 +16,9 @@ namespace AdoteUmFocinhoMobile.ViewModels
         private INavigationService _navigationService;
         private IPageDialogService _dialogService;
 
+        //Azure
+        AzureService azureService;
+        
         //Props
         private User _user;
 
@@ -27,17 +31,63 @@ namespace AdoteUmFocinhoMobile.ViewModels
         //Commands
         public Command LoginCommand { get; }
         public Command RegisterCommand { get; }
+        public Command FacebookCommand { get; set; }
 
         public LoginPageViewModel(INavigationService navigationService, IPageDialogService dialogService)
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
 
+            azureService = Xamarin.Forms.DependencyService.Get<AzureService>();
+            
             User = new User();
 
             LoginCommand = new Command(async () => await ExecuteLoginCommand());
             RegisterCommand = new Command(ExecuteRegisterCommand);
+            FacebookCommand = new Command(ExecuteFacebookCommand);
 
+        }
+
+        async void ExecuteFacebookCommand(object obj)
+        {
+            Inicia("Aguarde um momento...");
+            var logged = await azureService.LoginAsync();
+            if (logged)
+            {
+                User NewUser = new User();
+                NewUser.Name = App.SocialName;
+                NewUser.Email = App.SocialEmail;
+                NewUser.IdSocial = App.UserId;
+
+                using (APIHelper API = new APIHelper())
+                {
+                    try
+                    {
+                        App.UsuarioLogado = await API.POST<User>("api/users/facebook", NewUser);
+
+                        if (App.Logado)
+                        {
+                            Dictionary<String, String> Headers = API.HeadersAllRequests;
+
+                            //Add token usuário
+                            if (API.HeadersLastResponse.ContainsKey("token"))
+                                Headers.Add("token", API.HeadersLastResponse["token"]);
+
+                            API.HeadersAllRequests = Headers;
+
+                            Finaliza();
+
+                            await _navigationService.NavigateAsync("PrivacyPolicyPage");
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Finaliza();
+                    }
+                }
+            }
+            //api/users/facebook
+            Finaliza();
         }
 
         async Task ExecuteLoginCommand()
