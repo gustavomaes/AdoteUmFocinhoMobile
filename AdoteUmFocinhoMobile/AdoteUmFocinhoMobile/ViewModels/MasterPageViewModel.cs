@@ -13,20 +13,57 @@ namespace AdoteUmFocinhoMobile.ViewModels
         //Prism
         private INavigationService _navigationService;
 
-        //Commands
-        public Command MyFavoritesCommand { get; set; }
-        public Command FeedCommand { get; set; }
-        public Command MyFeedCommand { get; set; }
-        public Command AboutCommand { get; set; }
+        //Props
+        private List<MasterItem> _pages;
 
+        public List<MasterItem> Pages
+        {
+            get { return _pages; }
+            set { SetProperty(ref _pages, value); }
+        }
+
+
+        //Commands
+        //public Command MyFavoritesCommand { get; set; }
+        //public Command FeedCommand { get; set; }
+        //public Command MyFeedCommand { get; set; }
+        //public Command AboutCommand { get; set; }
+        public Command<MasterItem> ItemTappedCommand { get; set;
+        }
         public MasterPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
 
-            MyFavoritesCommand = new Command(ExecuteMyFavoritesCommand);
-            FeedCommand = new Command(ExecuteFeedCommand);
-            MyFeedCommand = new Command(ExecuteMyFeedCommand);
-            AboutCommand = new Command(ExecuteAboutCommand);
+            Pages = new List<MasterItem>();
+            Pages.Add(new MasterItem("Principal", "fa-home"));
+            Pages.Add(new MasterItem("Meus Focinhos", "fa-rss"));
+            Pages.Add(new MasterItem("Focinhos Favoritos", "fa-heart"));
+            Pages.Add(new MasterItem("Sobre", "fa-info"));
+
+            ItemTappedCommand = new Command<MasterItem>(ExecuteItemTappedCommand);
+            //MyFavoritesCommand = new Command(ExecuteMyFavoritesCommand);
+            //FeedCommand = new Command(ExecuteFeedCommand);
+            //MyFeedCommand = new Command(ExecuteMyFeedCommand);
+            //AboutCommand = new Command(ExecuteAboutCommand);
+        }
+
+        private void ExecuteItemTappedCommand(MasterItem item)
+        {
+            switch (item.Name)
+            {
+                case "Principal":
+                    ExecuteFeedCommand();
+                    break;
+                case "Meus Focinhos":
+                    ExecuteMyFeedCommand();
+                    break;
+                case "Focinhos Favoritos":
+                    ExecuteMyFavoritesCommand();
+                    break;
+                case "Sobre":
+                    ExecuteAboutCommand();
+                    break;
+            }
         }
 
         async void ExecuteAboutCommand()
@@ -54,5 +91,17 @@ namespace AdoteUmFocinhoMobile.ViewModels
         public void OnNavigatedTo(NavigationParameters parameters) { }
 
         public void OnNavigatingTo(NavigationParameters parameters) { }
+    }
+
+    public class MasterItem
+    {
+        public string Name { get; set; }
+        public string Icon { get; set; }
+
+        public MasterItem(string name, string icon)
+        {
+            this.Name = name;
+            this.Icon = icon;
+        }
     }
 }

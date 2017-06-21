@@ -14,7 +14,6 @@ namespace AdoteUmFocinhoMobile.ViewModels
 {
     public class MyFeedPageViewModel : BindableBase, INavigationAware
     {
-
         //Prism
         private INavigationService _navigationService;
 
@@ -62,6 +61,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
         //Commands
         public Command<Pet> ItemTappedCommand { get; set; }
+        public Command RegisterCommand { get; set; }
 
         public int HeightDP { get; set; }
 
@@ -72,8 +72,13 @@ namespace AdoteUmFocinhoMobile.ViewModels
             HeightDP = App.LarguraDP / 2;
 
             ItemTappedCommand = new Command<Pet>(ExecuteItemTappedCommand);
-
+            RegisterCommand = new Command(ExecuteRegisterCommand);
             SearchPets();
+        }
+
+        async void ExecuteRegisterCommand(object obj)
+        {
+            await _navigationService.NavigateAsync("RegisterPetPage");
         }
 
         async Task SearchPets()
@@ -122,6 +127,18 @@ namespace AdoteUmFocinhoMobile.ViewModels
             if (parameters["delete"] != null)
             {
                 Pets.Remove((Pet)parameters["delete"]);
+            }
+            if (parameters["new"] != null)
+            {
+                if (StackVisible)
+                {
+                    TextAwait = "";
+                    StackVisible = false;
+                    FlvVisible = true;
+
+                    Pets = new ObservableCollection<Pet>();
+                }
+                Pets.Insert(0, (Pet)parameters["new"]);
             }
         }
 

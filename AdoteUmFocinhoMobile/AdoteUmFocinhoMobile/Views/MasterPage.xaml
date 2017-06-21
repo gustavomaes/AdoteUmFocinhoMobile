@@ -4,20 +4,44 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AdoteUmFocinhoMobile.Views.MasterPage"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
              Title="Adote um Focinho">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <StackLayout Padding="0,20,0,0">
-                <Button Text="Principal"
-                        Command="{Binding FeedCommand}"/>
-                <Button Text="Meus Focinhos"
-                        Command="{Binding MyFeedCommand}"/>
-                <Button Text="Focinhos Favoritos"
-                        Command="{Binding MyFavoritesCommand}"/>
-                <Button Text="Sobre"
-                        Command="{Binding AboutCommand}"/>
-                <Button Text="Sair"/>
+            <StackLayout Padding="0,25,0,0"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
+
+                <Image Source="logo.png" />
+
+                <flv:FlowListView x:Name="flv"
+                                  FlowColumnCount="1"
+                                  FlowItemsSource="{Binding Pages}"
+                                  FlowItemTappedCommand="{Binding ItemTappedCommand}">
+
+                    <flv:FlowListView.FlowColumnTemplate>
+
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="15,0,0,0"
+                                         Padding="0,20,0,0">
+                                <iconize:IconImage HeightRequest="20" 
+                                                   Icon="{Binding Icon}"
+                                                   IconColor="#757575"
+                                                   WidthRequest="25"
+                                                   VerticalOptions="Center"/>
+                                <Label Text="{Binding Name}"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="Medium"/>
+                            </StackLayout>
+
+                        </DataTemplate>
+
+                    </flv:FlowListView.FlowColumnTemplate>
+                    
+                </flv:FlowListView>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

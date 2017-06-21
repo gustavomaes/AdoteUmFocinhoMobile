@@ -1,44 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AdoteUmFocinhoMobile.Views"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
              x:Class="AdoteUmFocinhoMobile.Views.RegisterPetPage"
              Title="Cadastro Focinho">
 
+    <Grid>
     <ScrollView>
 
         <StackLayout>
 
-            <Image Source="foto.png" />
+            <Image Source="{Binding ImagePet}" />
 
             <StackLayout Orientation="Horizontal">
                 <Button HorizontalOptions="FillAndExpand"
-                    BackgroundColor="#ff5722"
-                    HeightRequest="75"
-                    TextColor="White"
-                    Text="Foto" />
+                        BackgroundColor="#ff5722"
+                        HeightRequest="75"
+                        TextColor="White"
+                        Command="{Binding TakePhotoCommand}"
+                        Text="Foto" />
                 <Button HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="#ff5722"
-                    HeightRequest="75"
-                    TextColor="White"
-                    Text="Galeria" />
+                        BackgroundColor="#ff5722"
+                        HeightRequest="75"
+                        TextColor="White"
+                        Command="{Binding GalleryPhotoCommand}"
+                        Text="Galeria" />
             </StackLayout>
 
             <BoxView Color="#607D8B" 
                      HeightRequest="1" />
 
-            <Button Text="Espécie"
+            <Button Text="{Binding TextSpecie}"
                     BackgroundColor="#ff7043"
                     TextColor="White"
                     HorizontalOptions="Center"
+                    Command="{Binding SpecieCommand}"
                     WidthRequest="200"/>
 
-            <Button Text="Idade"
+            <Button Text="{Binding TextLifeStage}"
                     BackgroundColor="#ff7043"
                     TextColor="White"
                     HorizontalOptions="Center"
+                    Command="{Binding LifeStageCommand}"
                     WidthRequest="200"/>
 
             <Label Text="Descrição"
@@ -48,7 +54,8 @@
 
             <Frame OutlineColor="#607D8B"
                    Margin="10,10,10,10">
-                <Editor BackgroundColor="White"
+                <Editor Text="{Binding NewPet.Description}"
+                        BackgroundColor="White"
                         Margin="-9,-9,-9,-9"
                         HeightRequest="200"/>
             </Frame>
@@ -66,7 +73,8 @@
                                        Text="fa-envelope"
                                        VerticalTextAlignment="Center"/>
 
-                <Entry Placeholder="E-mail" 
+                <Entry Text="{Binding NewPet.Email}"
+                       Placeholder="E-mail" 
                        FontSize="Medium"
                        VerticalOptions="Center"
                        HorizontalOptions="FillAndExpand"/>
@@ -80,7 +88,8 @@
                                        Text="fa-phone-square"
                                        VerticalTextAlignment="Center"/>
 
-                <Entry Placeholder="Telefone" 
+                <Entry Text="{Binding NewPet.Phone}"
+                       Placeholder="Telefone" 
                        Keyboard="Telephone"
                        FontSize="Medium"
                        VerticalOptions="Center"
@@ -95,7 +104,8 @@
                                        Text="fa-whatsapp"
                                        VerticalTextAlignment="Center"/>
 
-                <Entry Placeholder="Whatsapp" 
+                <Entry Text="{Binding NewPet.Whatsapp}" 
+                       Placeholder="Whatsapp" 
                        Keyboard="Telephone"
                        FontSize="Medium"
                        VerticalOptions="Center"
@@ -106,6 +116,7 @@
                     BackgroundColor="#ff7043"
                     TextColor="White"
                     HorizontalOptions="Center"
+                    Command="{Binding PublishCommand}"
                     WidthRequest="200"
                     HeightRequest="75"/>
 
@@ -113,5 +124,7 @@
         </StackLayout>
         
     </ScrollView>
-    
+        <local:Loading/>
+    </Grid>
+
 </ContentPage>

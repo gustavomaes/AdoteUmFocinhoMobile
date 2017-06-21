@@ -19,6 +19,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
         private IPageDialogService _dialogService;
 
         //Props
+        bool Deleted;
+
         private Pet _petSelected;
 
         public Pet PetSelected
@@ -92,6 +94,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     using (APIHelper API = new APIHelper())
                     {
                         await API.DELETE("api/pets/" + PetSelected.Id);
+                        Deleted = true;
                     }
 
                     await _navigationService.GoBackAsync();
@@ -119,7 +122,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            parameters.Add("delete", PetSelected);
+            if (Deleted)
+                parameters.Add("delete", PetSelected);
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
