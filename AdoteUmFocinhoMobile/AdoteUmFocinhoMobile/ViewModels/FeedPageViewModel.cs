@@ -52,6 +52,14 @@ namespace AdoteUmFocinhoMobile.ViewModels
             set { SetProperty(ref _stackVisible, value); }
         }
 
+        private bool _actVisible;
+
+        public bool ActVisible
+        {
+            get { return _actVisible; }
+            set { SetProperty(ref _actVisible, value); }
+        }
+
         private string _headerText;
 
         public string HeaderText
@@ -121,6 +129,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     TextAwait = "Estamos pegando a sua localização, aguarde um momento.";
                     StackVisible = true;
                     FlvVisible = false;
+                    ActVisible = true;
 
                     await GetPosition();
 
@@ -139,9 +148,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     }
                     else
                         TextAwait = "Infelizmente não achamos nenhum focinho próximo a você :(";
-
-
-
+                    
+                    ActVisible = false;
                 }
             }
             catch (HTTPException) { }

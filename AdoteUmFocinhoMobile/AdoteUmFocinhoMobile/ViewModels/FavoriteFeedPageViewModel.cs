@@ -90,7 +90,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     API.HeadersRequest.Add("widthscreen", App.LarguraTela.ToString());
                     var ReturnPets = await API.GET<ObservableCollection<Pet>>("api/pets/favorite");
 
-                    if (ReturnPets != null)
+                    if (ReturnPets != null && ReturnPets.Count > 0)
                     {
                         TextAwait = "";
                         StackVisible = false;

@@ -13,7 +13,7 @@ namespace AdoteUmFocinhoMobile
     {
         #region Preferences Data
 
-        public const string URL = "http://192.168.25.135:4000";
+        public const string URL = "http://adoteumfocinhoweb.azurewebsites.net/";
         public const string URLSocial = "https://adoteumfocinho.azurewebsites.net/";
 
         public static App Current;

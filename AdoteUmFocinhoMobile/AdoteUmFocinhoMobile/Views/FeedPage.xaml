@@ -61,7 +61,7 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" />
 
-            <ActivityIndicator IsRunning="true"/>
+            <ActivityIndicator IsRunning="{Binding ActVisible}"/>
         </StackLayout>
        
     </Grid>
