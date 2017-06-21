@@ -205,8 +205,9 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     {
                         PositionStatus = t.Result.Timestamp.ToString("G");
                         Filters.Latitude = t.Result.Latitude;
+                        App.Latitude = (int)t.Result.Latitude;
                         Filters.Longitude = t.Result.Longitude;
-
+                        App.Longitude = (int)t.Result.Longitude;
                     }
 
                 });

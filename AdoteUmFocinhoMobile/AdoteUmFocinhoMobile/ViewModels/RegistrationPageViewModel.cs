@@ -81,8 +81,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
                         Dictionary<String, String> Headers = API.HeadersAllRequests;
 
                         //Add token usuário
-                        if (API.HeadersLastResponse.ContainsKey("token"))
-                            Headers.Add("token", API.HeadersLastResponse["token"]);
+                        if (API.HeadersLastResponse.ContainsKey("Token"))
+                            Headers.Add("Token", API.HeadersLastResponse["Token"]);
 
                         API.HeadersAllRequests = Headers;
 

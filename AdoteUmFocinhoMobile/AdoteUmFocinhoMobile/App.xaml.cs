@@ -12,11 +12,14 @@ namespace AdoteUmFocinhoMobile
     public partial class App : PrismApplication
     {
         #region Preferences Data
-
-        public const string URL = "http://adoteumfocinhoweb.azurewebsites.net/";
+        //http://192.168.25.135:4000
+        public const string URL = "http://adoteumfocinhoweb.azurewebsites.net";
         public const string URLSocial = "https://adoteumfocinho.azurewebsites.net/";
 
         public static App Current;
+
+        public static double Latitude;
+        public static double Longitude;
 
         //Social Login
         public static string AuthToken { get; set; }

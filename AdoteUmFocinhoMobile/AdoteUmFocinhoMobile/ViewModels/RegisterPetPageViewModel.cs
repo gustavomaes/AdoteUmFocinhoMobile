@@ -123,6 +123,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
                 using (APIHelper API = new APIHelper())
                 {
                     NewPet.UserId = App.UsuarioLogado.Id;
+                    NewPet.Latitude = App.Latitude;
+                    NewPet.Longitude = App.Longitude;
 
                     API.HeadersRequest.Add("widthscreen", App.LarguraTela.ToString());
                     PostGravado = await API.POST<Pet>("api/pets", NewPet);

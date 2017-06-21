@@ -25,6 +25,7 @@ namespace AdoteUmFocinhoMobile.Util
             SetHeadersAllRequest(request);
 
             var response = await _client.Execute<T>(request);
+
             ValidateReturn(response);
             GetHeadersLastRequest(response.Headers);
             return response.Data;
