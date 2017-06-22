@@ -14,7 +14,7 @@ using XLabs.Platform.Services.Geolocation;
 
 namespace AdoteUmFocinhoMobile.Droid
 {
-    [Activity(Label = "AdoteUmFocinhoMobile", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Adote um FocinhoMobile", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

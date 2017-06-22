@@ -9,7 +9,7 @@
     <ScrollView>
         <StackLayout Padding="5">
 
-            <Image Source="logo.png" 
+            <Image Source="focinhos_logo.jpg" 
                    HorizontalOptions="Center"/>
             
             <Label Text="Versão 1.0.0" 
@@ -20,16 +20,16 @@
             <Label Text="O que é o Adote um Focinho ?"
                    FontSize="Large"
                    FontAttributes="Bold" />
-            <Label Text="Texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
-                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
-                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
-                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
-                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
-                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
-                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
-                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição 
-                   texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição texto descrição "
-                   FontSize="Medium" />
+            <Label FontSize="Medium" 
+                   Text="     Hoje em dia, adotar um animal de estimação requer uma pesquisa longa em diversos locais, como sites de adoção, ONGs, grupos do Facebook, etc. O aplicativo Adote um Focinho tem como principal função centralizar as informações para adoção de animais de estimação, trazendo para o usuário uma lista com os animais próximos a ele, contendo contato (Email, Telefone e Whatsapp), descrição e uma foto. É possível também marcar como favorito os animais que mais gostar, e posteriormente poder acessar sua lista com os favoritos.
+No aplicativo o usuário pode também filtrar os resultados conforme necessário, marcando a distância da pesquisa em quilômetros, escolher a espécie do animal, e a faixa etária."/>
+
+            <Label FontSize="Medium"
+                   Text="     Caso o usuário queira, pode também colocar algum animal para adoção. Nessa etapa é necessário adicionar uma foto, descrição e informações para contato. E após a adoção ser concretizada, o responsável pelo cadastro pode excluir o mesmo." />
+
+            <Label FontSize="Medium"
+                   Text="     Como forma de prevenção, é possível que os usuários denunciem algum animal cadastrado, e conforme a quantidade de denuncias o cadastro do animal é bloqueado temporariamente para analise."/>
+
             <StackLayout Padding="20" />
 
             <Button Text="Política de Privacidade"

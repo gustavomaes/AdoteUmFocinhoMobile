@@ -130,8 +130,31 @@ namespace AdoteUmFocinhoMobile.ViewModels
         {
             PetSelected = (Pet)parameters["pet"];
 
-            SpecieText = PetSelected.Specie.ToString();
-            LifeStageText = PetSelected.type.ToString();
+            switch (PetSelected.Specie)
+            {
+                case Pet.SpecieAnimals.Dog:
+                    SpecieText = "Cachorro";
+                    break;
+                case Pet.SpecieAnimals.Cat:
+                    SpecieText = "Gato";
+                    break;
+            }
+
+            switch (PetSelected.type)
+            {   
+                case Pet.LifeStages.Puppy:
+                    LifeStageText = "Filhote";
+                    break;
+                case Pet.LifeStages.Teenager:
+                    LifeStageText = "Jovem";
+                    break;
+                case Pet.LifeStages.Adult:
+                    LifeStageText = "Adulto";
+                    break;
+                case Pet.LifeStages.Senior:
+                    LifeStageText = "3ª Idade";
+                    break;
+            }
 
             EmailVisible = !String.IsNullOrEmpty(PetSelected.Email);
             PhoneVisible = !String.IsNullOrEmpty(PetSelected.Phone);

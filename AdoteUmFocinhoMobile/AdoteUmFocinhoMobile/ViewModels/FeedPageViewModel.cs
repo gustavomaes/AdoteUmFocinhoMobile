@@ -126,12 +126,19 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
                 using (APIHelper API = new APIHelper())
                 {
-                    TextAwait = "Estamos pegando a sua localização, aguarde um momento.";
+
                     StackVisible = true;
                     FlvVisible = false;
                     ActVisible = true;
 
-                    await GetPosition();
+                    if (App.Latitude == 0 && App.Longitude == 0)
+                    {
+                        TextAwait = "Estamos pegando a sua localização, aguarde um momento.";
+                        await GetPosition();
+                    }
+
+                    Filters.Latitude = App.Latitude;
+                    Filters.Longitude = App.Longitude;
 
                     TextAwait = "Agora estamos procurando Focinhos próximos a você, espera só mais um pouquinho.";
                     API.HeadersRequest.Add("widthscreen", App.LarguraTela.ToString());
@@ -204,10 +211,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     else
                     {
                         PositionStatus = t.Result.Timestamp.ToString("G");
-                        Filters.Latitude = t.Result.Latitude;
-                        App.Latitude = (int)t.Result.Latitude;
-                        Filters.Longitude = t.Result.Longitude;
-                        App.Longitude = (int)t.Result.Longitude;
+                        App.Latitude = t.Result.Latitude;
+                        App.Longitude = t.Result.Longitude;
                     }
 
                 });

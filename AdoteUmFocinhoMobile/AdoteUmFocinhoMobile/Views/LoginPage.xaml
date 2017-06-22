@@ -4,62 +4,77 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:local="clr-namespace:AdoteUmFocinhoMobile.Views"
+             BackgroundColor="#ff8a65"
              x:Class="AdoteUmFocinhoMobile.Views.LoginPage">
 
+    <ScrollView>
         <Grid>
-            <StackLayout VerticalOptions="FillAndExpand">
-                <Image Source="background.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" />
-            </StackLayout>
 
-            <StackLayout HorizontalOptions="Center"
-                        VerticalOptions="Center">
+            <StackLayout>
 
-                <Image Source="logo.png" 
-                    WidthRequest="210"/>
+                <StackLayout HorizontalOptions="Fill"
+                             VerticalOptions="Start"
+                             BackgroundColor="White"
+                             HeightRequest="230">
+                    <Image Source="focinhos_logo.jpg"
+                           Margin="0,20,0,0"
+                           WidthRequest="210"/>
 
-                <StackLayout Padding="30" />
+                    <StackLayout Padding="30" />
+                </StackLayout>
 
-            <Image Source="facebook_button.png" 
-                    WidthRequest="280">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding FacebookCommand}" 
-                                          NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
 
-                <StackLayout Padding="1"/>
+                <StackLayout BackgroundColor="#ff8a65"
+                             VerticalOptions="EndAndExpand"
+                             HorizontalOptions="Center">
 
-                <Entry Text="{Binding User.Email}"
-                    Placeholder="Email"
-                    Keyboard="Email"
-                    BackgroundColor="#59ffffff"
-                    WidthRequest="300"/>
-                <Entry Text="{Binding User.Password}"
-                    Placeholder="Senha"
-                    IsPassword="True"
-                    BackgroundColor="#59ffffff"
-                    WidthRequest="300"/>
 
-                <StackLayout Padding="3"/>
+                    <StackLayout Padding="1"/>
 
-                <Button Text="Entrar"
-                    BackgroundColor="#ff7043"
-                    TextColor="White"
-                    HorizontalOptions="Center"
-                    WidthRequest="170"
-                    Command="{Binding LoginCommand}"/>
+                    <Entry Text="{Binding User.Email}"
+                           PlaceholderColor="White"
+                           TextColor="White"
+                           Placeholder="Email"
+                           Keyboard="Email"
+                           WidthRequest="300"/>
+                    <Entry Text="{Binding User.Password}"
+                           PlaceholderColor="White"
+                           TextColor="White"
+                           Placeholder="Senha"
+                           IsPassword="True"
+                           WidthRequest="300"/>
 
-                <Button Text="Cadastrar"
-                    BackgroundColor="#ff7043"
-                    TextColor="White"
-                    HorizontalOptions="Center"
-                    WidthRequest="170"
-                    Command="{Binding RegisterCommand}"/>
+                    <StackLayout Padding="5"/>
 
+                    <Button Text="Entrar"
+                            BackgroundColor="#607D8B"
+                            TextColor="White"
+                            HorizontalOptions="Center"
+                            WidthRequest="280"
+                            Command="{Binding LoginCommand}"/>
+
+                    <Button Text="Entrar com o Facebook"
+                            BackgroundColor="#607D8B"
+                            TextColor="White"
+                            HorizontalOptions="Center"
+                            WidthRequest="280"
+                            Command="{Binding FacebookCommand}"/>
+
+                    <Button Text="Cadastrar"
+                            BackgroundColor="#607D8B"
+                            TextColor="White"                            
+                            HorizontalOptions="Center"
+                            WidthRequest="280"
+                            Command="{Binding RegisterCommand}"/>
+
+                    <StackLayout Padding="10" />
+
+                </StackLayout>
             </StackLayout>
 
             <local:Loading/>
 
         </Grid>
+    </ScrollView>
 
 </ContentPage>

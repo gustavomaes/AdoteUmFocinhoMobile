@@ -5,54 +5,78 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AdoteUmFocinhoMobile.Views.RegistrationPage"
              xmlns:local="clr-namespace:AdoteUmFocinhoMobile.Views"
+             BackgroundColor="#ff8a65"
              Title="Cadastro">
 
     <Grid>
-        
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Image Source="background.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+
+                <StackLayout HorizontalOptions="Fill"
+                             VerticalOptions="Start"
+                             BackgroundColor="White"
+                             HeightRequest="230">
+
+                    <Image Source="focinhos_logo_2.jpg"
+                               WidthRequest="200"/>
+                
+                    <Label Text="Cadastro"
+                           TextColor="#607D8B"
+                           HorizontalTextAlignment="Center"
+                           FontSize="40"
+                           FontAttributes="Bold" />
+                
+                </StackLayout>
+
+                <StackLayout VerticalOptions="EndAndExpand"
+                             HorizontalOptions="Center"
+                             BackgroundColor="#ff8a65">
+
+                        <Entry Text="{Binding NewUser.Name}"
+                               Placeholder="Nome"
+                               PlaceholderColor="White"
+                               TextColor="White"
+                               Keyboard="Email"
+                               WidthRequest="300"/>
+
+                        <Entry Text="{Binding NewUser.Email}"
+                               Placeholder="Email"
+                               PlaceholderColor="White"
+                               TextColor="White"
+                               Keyboard="Email"
+                               WidthRequest="300"/>
+
+                        <Entry Text="{Binding NewUser.Password}"
+                               Placeholder="Senha"
+                               PlaceholderColor="White"
+                               TextColor="White"
+                               IsPassword="True"
+                               WidthRequest="300"/>
+
+                    <StackLayout Padding="3"/>
+
+                    <Button Text="Cadastrar"
+                            BackgroundColor="#607D8B"
+                            TextColor="White"
+                            HorizontalOptions="Center"
+                            WidthRequest="200"
+                            Command="{Binding RegisterCommand}"/>
+
+                    <Button Text="Voltar"
+                            BackgroundColor="#607D8B"
+                            TextColor="White"
+                            BorderWidth="1"
+                            HorizontalOptions="Center"
+                            WidthRequest="200"
+                            Command="{Binding BackCommand}"/>
+                    
+                    <StackLayout Padding="10" />
 
 
-        <StackLayout HorizontalOptions="Center"
-                     VerticalOptions="Center">
-            <Entry Text="{Binding NewUser.Name}"
-                   Placeholder="Nome"
-                   Keyboard="Email"
-                   BackgroundColor="#59ffffff"
-                   WidthRequest="300"/>
+                </StackLayout>
+            </StackLayout>
 
-            <Entry Text="{Binding NewUser.Email}"
-                    Placeholder="Email"
-                    Keyboard="Email"
-                    BackgroundColor="#59ffffff"
-                    WidthRequest="300"/>
-
-            <Entry Text="{Binding NewUser.Password}"
-                    Placeholder="Senha"
-                    IsPassword="True"
-                    BackgroundColor="#59ffffff"
-                    WidthRequest="300"/>
-
-            <StackLayout Padding="3"/>
-
-            <Button Text="Cadastrar"
-                    BackgroundColor="#ff7043"
-                    TextColor="White"
-                    HorizontalOptions="Center"
-                    WidthRequest="170"
-                    Command="{Binding RegisterCommand}"/>
-
-            <Button Text="Voltar"
-                    BackgroundColor="#ff7043"
-                    TextColor="White"
-                    HorizontalOptions="Center"
-                    WidthRequest="170"
-                    Command="{Binding BackCommand}"/>
-
-        </StackLayout>
-
-        <local:Loading/>
-        
+            <local:Loading/>
+        </ScrollView>
     </Grid>
 </ContentPage>
