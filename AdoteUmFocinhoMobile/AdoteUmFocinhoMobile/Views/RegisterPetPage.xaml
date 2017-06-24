@@ -47,10 +47,17 @@
                     Command="{Binding LifeStageCommand}"
                     WidthRequest="200"/>
 
+            <Button Text="{Binding GenderText}"
+                    BackgroundColor="#ff7043"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    Command="{Binding GenderCommand}"
+                    WidthRequest="200"/>
+
             <Label Text="Descrição"
-                   FontSize="Large"
-                   HorizontalTextAlignment="Center"
-                   FontAttributes="Bold" />
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold" />
 
             <Frame OutlineColor="#607D8B"
                    Margin="10,10,10,10">

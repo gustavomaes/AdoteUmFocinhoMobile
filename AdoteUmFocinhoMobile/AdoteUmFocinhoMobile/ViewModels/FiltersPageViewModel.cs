@@ -39,6 +39,22 @@ namespace AdoteUmFocinhoMobile.ViewModels
             set { SetProperty(ref _cat, value); }
         }
 
+        //Gender
+        private bool _male;
+
+        public bool Male
+        {
+            get { return _male; }
+            set { SetProperty(ref _male, value); }
+        }
+
+        private bool _female;
+
+        public bool Female
+        {
+            get { return _female; }
+            set { SetProperty(ref _female, value); }
+        }
 
         //LifeStage
         private bool _puppy;
@@ -81,6 +97,9 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
         void SetUpView()
         {
+            Male = Filters.Genders.Contains(1);
+            Female = Filters.Genders.Contains(2);
+
             Dog = Filters.Specie.Contains(1);
             Cat = Filters.Specie.Contains(2);
 
@@ -92,6 +111,10 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
         void SetUpFilter()
         {
+            Filters.Genders = new List<int>();
+            if (Male) Filters.Genders.Add(1);
+            if (Female) Filters.Genders.Add(2);
+
             Filters.Specie = new List<int>();
             if (Dog) Filters.Specie.Add(1);
             if (Cat) Filters.Specie.Add(2);

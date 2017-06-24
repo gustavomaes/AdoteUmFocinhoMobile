@@ -6,6 +6,7 @@
              x:Class="AdoteUmFocinhoMobile.Views.FiltersPage"
              Title="Filtros">
 
+    <ScrollView>
     <StackLayout Padding="10"
                  HorizontalOptions="Center">
 
@@ -31,7 +32,36 @@
                 Value="{Binding Filters.Radius}"
                 WidthRequest="300"/>
 
-        <StackLayout Padding="10" />
+        <StackLayout Padding="5" />
+
+        <Label Text="Sexo"
+               FontSize="Large"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center" />
+
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+
+            <StackLayout HorizontalOptions="Center" 
+                         Padding="5">
+                <Label Text="Macho"
+                       FontSize="Medium" 
+                       HorizontalTextAlignment="Center" />
+                <Switch HorizontalOptions="Center"
+                        IsToggled="{Binding Male}"/>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center"
+                         Padding="5">
+                <Label Text="Fêmea"
+                       FontSize="Medium"
+                       HorizontalTextAlignment="Center" />
+                <Switch HorizontalOptions="Center"
+                        IsToggled="{Binding Female}"/>
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Padding="5" />
 
         <Label Text="Espécie"
                FontSize="Large"
@@ -60,7 +90,7 @@
             </StackLayout>
         </StackLayout>
 
-        <StackLayout Padding="10" />
+        <StackLayout Padding="5" />
 
         <Label Text="Idade"
             FontSize="Large"
@@ -120,5 +150,5 @@
         </StackLayout>
 
     </StackLayout>
-  
+    </ScrollView>
 </ContentPage>

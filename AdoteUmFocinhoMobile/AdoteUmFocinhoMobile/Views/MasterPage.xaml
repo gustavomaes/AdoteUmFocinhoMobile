@@ -56,6 +56,20 @@
                     </flv:FlowListView.FlowColumnTemplate>
                     
                 </flv:FlowListView>
+
+                <StackLayout VerticalOptions="End">
+                    
+                    <Label Text="Sair"
+                           FontSize="Medium"
+                           Margin="10,0,0,10">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogoffCommand}"
+                                                  NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    
+                </StackLayout>
+                
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

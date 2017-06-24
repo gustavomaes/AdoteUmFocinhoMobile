@@ -23,6 +23,15 @@
                 <Label Text="{Binding LifeStageText}"
                        FontSize="Large"
                        FontAttributes="Bold"/>
+
+                <Label Text=" | "
+                       FontSize="Large"
+                       FontAttributes="Bold"/>
+
+                <Label Text="{Binding GenderText}"
+                       FontSize="Large"
+                       FontAttributes="Bold"/>
+                
             </StackLayout>
 
             <StackLayout Margin="5,0,0,0">

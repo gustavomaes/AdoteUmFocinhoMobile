@@ -24,5 +24,7 @@ namespace AdoteUmFocinhoMobile.Models
         public List<int> Specie;
 
         public List<int> LifeStage;
+
+        public List<int> Genders;
     }
 }

@@ -70,6 +70,14 @@ namespace AdoteUmFocinhoMobile.ViewModels
             set { SetProperty(ref _lifeStageText, value); }
         }
 
+        private string _genderText;
+
+        public string GenderText
+        {
+            get { return _genderText; }
+            set { SetProperty(ref _genderText, value); }
+        }
+
         //Commands
         public Command ReportCommand { get; set; }
         public Command DeleteCommand { get; set; }
@@ -141,7 +149,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
             }
 
             switch (PetSelected.type)
-            {   
+            {
                 case Pet.LifeStages.Puppy:
                     LifeStageText = "Filhote";
                     break;
@@ -153,6 +161,16 @@ namespace AdoteUmFocinhoMobile.ViewModels
                     break;
                 case Pet.LifeStages.Senior:
                     LifeStageText = "3ª Idade";
+                    break;
+            }
+
+            switch (PetSelected.Gender)
+            {
+                case Pet.GenderTypes.Male:
+                    GenderText = "Macho";
+                    break;
+                case Pet.GenderTypes.Famele:
+                    GenderText = "Fêmea";
                     break;
             }
 

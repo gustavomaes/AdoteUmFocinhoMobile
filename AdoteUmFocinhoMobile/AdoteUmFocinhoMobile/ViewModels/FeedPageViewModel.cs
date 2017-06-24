@@ -99,7 +99,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
             Filters = new Filter();
             Filters.Radius = 50;
-            Filters.Specie = new List<int>(new int[] { 1,2 });
+            Filters.Genders = new List<int>(new int[] { 1, 2 });
+            Filters.Specie = new List<int>(new int[] { 1, 2 });
             Filters.LifeStage = new List<int>(new int[] { 1, 2, 3, 4 }); ;
 
             HelloText = "Olá " + App.UsuarioLogado.Name + ".";

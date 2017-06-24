@@ -29,6 +29,14 @@ namespace AdoteUmFocinhoMobile.Models
 
         public SpecieAnimals Specie { get; set; }
 
+        public enum GenderTypes
+        {
+            Male = 1,
+            Famele = 2
+        }
+
+        public GenderTypes Gender { get; set; }
+
         public byte[] Photo { get; set; }
 
         public string PhotoUrl { get; set; }

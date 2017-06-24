@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using AdoteUmFocinhoMobile.Util;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -24,10 +25,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
 
         //Commands
-        //public Command MyFavoritesCommand { get; set; }
-        //public Command FeedCommand { get; set; }
-        //public Command MyFeedCommand { get; set; }
-        //public Command AboutCommand { get; set; }
+        public Command LogoffCommand { get; set; }
+
         public Command<MasterItem> ItemTappedCommand { get; set;
         }
         public MasterPageViewModel(INavigationService navigationService)
@@ -41,10 +40,27 @@ namespace AdoteUmFocinhoMobile.ViewModels
             Pages.Add(new MasterItem("Sobre", "fa-info"));
 
             ItemTappedCommand = new Command<MasterItem>(ExecuteItemTappedCommand);
-            //MyFavoritesCommand = new Command(ExecuteMyFavoritesCommand);
-            //FeedCommand = new Command(ExecuteFeedCommand);
-            //MyFeedCommand = new Command(ExecuteMyFeedCommand);
-            //AboutCommand = new Command(ExecuteAboutCommand);
+            LogoffCommand = new Command(ExecuteLogoffCommand);
+            
+        }
+
+        async void ExecuteLogoffCommand()
+        {
+            using (APIHelper API = new APIHelper())
+            {
+                try
+                {
+                    await API.POST("api/users/logoff", new { });
+
+                    App.UsuarioLogado = null;
+                    API.HeadersAllRequests = new Dictionary<string, string>();
+                }
+                catch (HTTPException EX) { }
+                catch (Exception EX) { }
+
+            }
+
+            await _navigationService.NavigateAsync("app:///LoginPage");
         }
 
         private void ExecuteItemTappedCommand(MasterItem item)

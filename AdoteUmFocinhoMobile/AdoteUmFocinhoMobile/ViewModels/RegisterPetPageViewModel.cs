@@ -53,6 +53,14 @@ namespace AdoteUmFocinhoMobile.ViewModels
             set { SetProperty(ref _textLifeStage, value); }
         }
 
+        private string _genderText;
+
+        public string GenderText
+        {
+            get { return _genderText; }
+            set { SetProperty(ref _genderText, value); }
+        }
+
 
         //Commands
         public Command TakePhotoCommand { get; set; }
@@ -60,7 +68,9 @@ namespace AdoteUmFocinhoMobile.ViewModels
         public Command SpecieCommand { get; set; }
         public Command LifeStageCommand { get; set; }
         public Command PublishCommand { get; set; }
-        
+        public Command GenderCommand { get; set; }
+
+
 
         public RegisterPetPageViewModel(INavigationService navigationService, IPageDialogService dialogService)
         {
@@ -72,12 +82,31 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
             TextSpecie = "Espécie";
             TextLifeStage = "Idade";
+            GenderText = "Sexo";
 
             TakePhotoCommand = new Command(async () => await ExecuteTakePhotoCommand(), () => true);
             GalleryPhotoCommand = new Command(async () => await ExecuteGalleryPhotoCommand(), () => true);
             SpecieCommand = new Command(ExecuteSpecieCommand);
             LifeStageCommand = new Command(ExecuteLifeStageCommand);
             PublishCommand = new Command(ExecutePublishCommand);
+            GenderCommand = new Command(ExecuteGenderCommand);
+        }
+
+        async void ExecuteGenderCommand()
+        {
+            var action = await _dialogService.DisplayActionSheetAsync("Qual o sexo do Focinho ?", "Cancelar", null, "Macho", "Fêmea");
+
+            switch (action)
+            {
+                case "Macho":
+                    NewPet.Gender = Pet.GenderTypes.Male;
+                    TextSpecie = action;
+                    break;
+                case "Fêmea":
+                    NewPet.Gender = Pet.GenderTypes.Famele;
+                    TextSpecie = action;
+                    break;
+            }
         }
 
         async void ExecutePublishCommand()
@@ -101,6 +130,12 @@ namespace AdoteUmFocinhoMobile.ViewModels
                 String.IsNullOrEmpty(NewPet.Whatsapp))
             {
                 await _dialogService.DisplayAlertAsync("Atenção", "Informe pelo menos uma forma de contato.", "OK");
+                return;
+            }
+
+            if (NewPet.Gender == 0)
+            {
+                await _dialogService.DisplayAlertAsync("Atenção", "Informe o sexo do focinho.", "OK");
                 return;
             }
 
