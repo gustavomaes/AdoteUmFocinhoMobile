@@ -3707,8 +3707,11 @@ namespace AdoteUmFocinhoMobile.Droid
 			// aapt resource value: 0x7f0200a6
 			public const int mr_ic_play_light = 2130837670;
 			
+			// aapt resource value: 0x7f0200a8
+			public const int notification_template_icon_bg = 2130837672;
+			
 			// aapt resource value: 0x7f0200a7
-			public const int notification_template_icon_bg = 2130837671;
+			public const int splash = 2130837671;
 			
 			static Drawable()
 			{
@@ -5434,6 +5437,9 @@ namespace AdoteUmFocinhoMobile.Droid
 			
 			// aapt resource value: 0x7f0a0003
 			public const int Theme_MediaRouter_LightControlPanel = 2131361795;
+			
+			// aapt resource value: 0x7f0a0178
+			public const int Theme_Splash = 2131362168;
 			
 			// aapt resource value: 0x7f0a010e
 			public const int ThemeOverlay_AppCompat = 2131362062;

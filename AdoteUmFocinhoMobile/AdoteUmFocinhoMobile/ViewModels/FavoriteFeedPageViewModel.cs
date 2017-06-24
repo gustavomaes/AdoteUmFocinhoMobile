@@ -99,7 +99,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
                         Pets = ReturnPets;
                     }
                     else
-                        TextAwait = "Você ainda não marcou nenhum Focinho como favorito.";
+                        TextAwait = "Ops, você ainda não marcou nenhum Focinho como favorito.";
 
                     ActVisible = false;
                 }

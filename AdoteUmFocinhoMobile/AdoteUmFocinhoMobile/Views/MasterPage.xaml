@@ -14,7 +14,7 @@
                          HorizontalOptions="Center"
                          VerticalOptions="Center">
 
-                <Image Source="focinhos_logo.jpg"
+                <Image Source="focinhos_logo.png"
                        WidthRequest="180"/>
 
                 <BoxView HeightRequest="1"

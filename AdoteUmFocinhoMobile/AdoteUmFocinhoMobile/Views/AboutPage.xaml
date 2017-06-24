@@ -9,7 +9,7 @@
     <ScrollView>
         <StackLayout Padding="5">
 
-            <Image Source="focinhos_logo.jpg" 
+            <Image Source="focinhos_logo.png" 
                    HorizontalOptions="Center"/>
             
             <Label Text="Versão 1.0.0" 

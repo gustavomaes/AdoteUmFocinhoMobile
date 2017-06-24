@@ -8,8 +8,8 @@
              BackgroundColor="#ff8a65"
              Title="Cadastro">
 
-    <Grid>
-        <ScrollView>
+    <!--<Grid>
+        <ScrollView>-->
             <StackLayout>
 
                 <StackLayout HorizontalOptions="Fill"
@@ -76,7 +76,7 @@
                 </StackLayout>
             </StackLayout>
 
-            <local:Loading/>
+            <!--<local:Loading/>
         </ScrollView>
-    </Grid>
+    </Grid>-->
 </ContentPage>

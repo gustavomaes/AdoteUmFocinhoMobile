@@ -16,7 +16,7 @@
                              VerticalOptions="Start"
                              BackgroundColor="White"
                              HeightRequest="230">
-                    <Image Source="focinhos_logo.jpg"
+                    <Image Source="focinhos_logo.png"
                            Margin="0,20,0,0"
                            WidthRequest="210"/>
 

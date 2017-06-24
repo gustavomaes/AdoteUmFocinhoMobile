@@ -133,14 +133,14 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
                     if (App.Latitude == 0 && App.Longitude == 0)
                     {
-                        TextAwait = "Estamos pegando a sua localização, aguarde um momento.";
+                        TextAwait = "Olá, estamos procurando os focinhos próximos a você, espera só um pouco...";
                         await GetPosition();
                     }
 
                     Filters.Latitude = App.Latitude;
                     Filters.Longitude = App.Longitude;
 
-                    TextAwait = "Agora estamos procurando Focinhos próximos a você, espera só mais um pouquinho.";
+                    TextAwait = "Só mais um pouco. Queremos ter certeza de que iremos encontrar os melhores amigos. Ops, Focinhos.";
                     API.HeadersRequest.Add("widthscreen", App.LarguraTela.ToString());
                     var ReturnPets = await API.POST<ObservableCollection<Pet>>("api/pets/feed", Filters);
 
@@ -154,7 +154,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
                         Pets = ReturnPets;
                     }
                     else
-                        TextAwait = "Infelizmente não achamos nenhum focinho próximo a você :(";
+                        TextAwait = "Infelizmente não conseguimos encontrar nenhum Focinho próximo a você :(  Tente usar os filtros para ampliar sua busca.";
                     
                     ActVisible = false;
                 }
