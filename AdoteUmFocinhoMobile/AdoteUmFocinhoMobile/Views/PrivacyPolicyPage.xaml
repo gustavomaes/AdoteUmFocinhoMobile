@@ -10,10 +10,6 @@
         <ScrollView>
             <StackLayout>
 
-                <Label Text="Política de Privacidade"
-                       FontAttributes="Bold"
-                       FontSize="Large"/>
-
                 <StackLayout Padding="10"/>
 
                 <Label Text="O QUE FAZEMOS COM AS SUAS INFORMAÇÕES?" 
@@ -67,7 +63,7 @@ Se você nos fornecer as suas informações de cartão de crédito, elas serão 
                 <Label>Reservamos o direito de modificar essa política de privacidade a qualquer momento. Portanto, por favor, leia-a com frequência. As alterações e esclarecimentos surtem efeito imediatamente após serem publicadas no aplicativo. Caso façamos alterações na política de privacidade, iremos notificá-lo sobre a atualização. Assim, você saberá quais informações coletamos, como as usamos, e sob que circunstâncias, caso aplicável, as utilizaremos e/ou divulgaremos.
 
 Caso ocorra a fusão da nosso Aplicativo com outra empresa, suas informações podem ser transferidas para os novos proprietários para que possamos continuar vendendo produtos para você.</Label>
-                
+
                 <StackLayout Padding="10" />
                 <Label Text="PERGUNTAS E INFORMAÇÕES DE CONTATO" 
                    FontAttributes="Bold"
@@ -81,22 +77,6 @@ Rua Eugenio Nicolini, n202, Jaraguá do Sul, SC, 89251220, Brazil</Label>
 
             </StackLayout>
         </ScrollView>
-
-        <StackLayout Orientation="Horizontal"
-                     IsVisible="{Binding StackVisible}">
-            <Button HorizontalOptions="FillAndExpand"
-                    BackgroundColor="#ff7043"
-                    HeightRequest="75"
-                    TextColor="White"
-                    Command="{Binding AcceptCommand}"
-                    Text="ACEITAR" />
-            <Button HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="#ff5722"
-                    HeightRequest="75"
-                    TextColor="White"
-                    Command="{Binding RefuseCommand}"
-                    Text="RECUSAR" />
-        </StackLayout>
     </StackLayout>
   
 </ContentPage>

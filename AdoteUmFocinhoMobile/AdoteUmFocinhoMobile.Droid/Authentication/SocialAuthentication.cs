@@ -1,5 +1,6 @@
 ﻿using AdoteUmFocinhoMobile.Droid.Authentication;
 using AdoteUmFocinhoMobile.Services;
+using Android.Webkit;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,12 @@ namespace AdoteUmFocinhoMobile.Droid.Authentication
             {
                 return null;
             }
+        }
+
+        public async Task LogoutAsync(MobileServiceClient client)
+        {
+            CookieManager.Instance.RemoveAllCookie();
+            await client.LogoutAsync();
         }
     }
 }

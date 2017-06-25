@@ -86,7 +86,6 @@ namespace AdoteUmFocinhoMobile
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<RegistrationPage>();
             Container.RegisterTypeForNavigation<PrivacyPolicyPage>();

@@ -12,5 +12,6 @@ namespace AdoteUmFocinhoMobile.Services
         Task<MobileServiceUser> LoginAsync(MobileServiceClient client,
                                            MobileServiceAuthenticationProvider provider,
                                            IDictionary<string, string> parameters = null);
+        Task LogoutAsync(MobileServiceClient client);
     }
 }

@@ -27,8 +27,8 @@ namespace AdoteUmFocinhoMobile.Droid
             resolverContainer.Register<IDevice>(t => AndroidDevice.CurrentDevice)
                                 .Register<IGeolocator>(t => new Geolocator());
 
+            Resolver.ResetResolver();
 
-            //Erro ao voltar - AQUI -
             Resolver.SetResolver(resolverContainer.GetResolver());
 
             base.OnCreate(bundle);

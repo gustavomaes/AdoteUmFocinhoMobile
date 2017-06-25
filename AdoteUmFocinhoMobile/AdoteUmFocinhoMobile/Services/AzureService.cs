@@ -22,6 +22,9 @@ namespace AdoteUmFocinhoMobile.Services
             Initialize();
 
             var auth = DependencyService.Get<IAuthentication>();
+
+            await LogoutAsync();
+
             var user = await auth.LoginAsync(Client, MobileServiceAuthenticationProvider.Facebook);
 
             App.AuthToken = string.Empty;
@@ -45,5 +48,18 @@ namespace AdoteUmFocinhoMobile.Services
             }
             return true;
         }
+
+        public async Task LogoutAsync()
+        {
+            Initialize();
+
+            var auth = DependencyService.Get<IAuthentication>();
+
+            if (auth != null)
+            {
+                await auth.LogoutAsync(Client);
+            }
+        }
+
     }
 }

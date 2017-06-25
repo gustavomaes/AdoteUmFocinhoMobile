@@ -56,7 +56,8 @@ namespace AdoteUmFocinhoMobile.ViewModels
         public ObservableCollection<Pet> Pets
         {
             get { return _pets; }
-            set { SetProperty(ref _pets, value); }
+            set
+            { SetProperty(ref _pets, value); }
         }
 
         //Commands
@@ -126,7 +127,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
         {
             if (parameters["delete"] != null)
             {
-                Pets.Remove((Pet)parameters["delete"]);
+                SearchPets();
             }
             if (parameters["new"] != null)
             {

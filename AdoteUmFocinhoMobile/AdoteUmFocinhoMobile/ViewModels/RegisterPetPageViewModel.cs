@@ -100,11 +100,11 @@ namespace AdoteUmFocinhoMobile.ViewModels
             {
                 case "Macho":
                     NewPet.Gender = Pet.GenderTypes.Male;
-                    TextSpecie = action;
+                    GenderText = action;
                     break;
                 case "Fêmea":
                     NewPet.Gender = Pet.GenderTypes.Famele;
-                    TextSpecie = action;
+                    GenderText = action;
                     break;
             }
         }

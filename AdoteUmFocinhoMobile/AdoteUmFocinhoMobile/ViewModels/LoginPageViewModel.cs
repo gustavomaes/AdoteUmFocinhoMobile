@@ -77,7 +77,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
                             Finaliza();
 
-                            await _navigationService.NavigateAsync("PrivacyPolicyPage");
+                            await _navigationService.NavigateAsync("app:///MasterPage/NavigationPage/FeedPage");
                         }
                     }
                     catch (Exception)
@@ -138,7 +138,7 @@ namespace AdoteUmFocinhoMobile.ViewModels
 
                         Finaliza();
 
-                        await _navigationService.NavigateAsync("PrivacyPolicyPage");
+                        await _navigationService.NavigateAsync("app:///MasterPage/NavigationPage/FeedPage");
 
                     }
                 }
